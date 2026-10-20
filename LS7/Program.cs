@@ -10,18 +10,27 @@ namespace LS7
     {
         static void Main(string[] args)
         {
-            int countdown = 5; while
-                (countdown > 0)
+            int anzahl; do
             {
-                Console.WriteLine(countdown);
-                --countdown;
-                if (countdown == 0)
-                {
-                    Console.WriteLine("Start");
+                Console.Write("How many books? 1 bis 5: ");
 
-                    Console.WriteLine();
-                }
+                anzahl = Convert.ToInt32(Console.ReadLine());
             }
+            while (anzahl != 1 && anzahl != 2 && anzahl != 3 && anzahl != 4 && anzahl != 5);
+
+            for (int i = 1; i <= anzahl; i++)
+            {
+                Console.WriteLine("book " + i + " registrated");
+            }
+
+            int offen = anzahl;
+
+            while (offen > 0)
+            {
+                Console.WriteLine("still " + offen + " open"); offen--;
+            }
+
+            Console.WriteLine("Every book has been processed!");
         }
     }
 }
