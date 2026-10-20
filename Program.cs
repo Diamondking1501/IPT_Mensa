@@ -11,19 +11,49 @@ namespace IPT_Mensa
         static void Main(string[] args)
         {
 
-            string artikelname;
-            int menge;
-            decimal einzelpreis;
+            Console.WriteLine("Name des Artikels?");
+            string Artikel = Console.ReadLine();
 
+            Console.WriteLine("Preis des Artikels?");
+            decimal Preis = Convert.ToDecimal(Console.ReadLine());
 
+            Console.WriteLine("Wie viele?");
+            int Menge = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Was Möchten Sie kaufen?");
-            artikelname = Console.ReadLine();
-            Console.WriteLine("Wie Viele?");
-            menge = int.Parse(Console.ReadLine());
-            Console.WriteLine("Was ist der Preis?");
-            einzelpreis = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Die Gesamtkosten betragen: " + (menge * einzelpreis) + " CHF");
+            Console.WriteLine();
+
+            if (Menge < 1)
+            {
+                Console.WriteLine("Fehler: Ungültige Menge!");
+            }
+
+            else
+            {
+                decimal zwischentotal = Preis * Menge;
+                decimal rabatt = 0;
+
+                if (Menge >= 5)
+                {
+                    rabatt = 0.20m;
+                }
+                else if (Menge >= 3)
+                {
+                    rabatt = 0.10m;
+                }
+
+                decimal rabattbetrag = zwischentotal * rabatt;
+                decimal endtotal = zwischentotal - rabattbetrag;
+
+                Console.WriteLine("***********************************************");
+                Console.WriteLine("Artikel: " + Artikel);
+                Console.WriteLine("Zwischentotal: " + zwischentotal.ToString("0.00") + " CHF");
+                Console.WriteLine("Rabatt: " + (rabatt * 100).ToString("0") + " %");
+                Console.WriteLine("Rabattbetrag: " + rabattbetrag.ToString("0.00") + " CHF");
+                Console.WriteLine("Endtotal: " + endtotal.ToString("0.00") + " CHF");
+                Console.WriteLine("***********************************************");
+            }
+
+            Console.ReadLine();
         }
     }
 }
